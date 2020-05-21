@@ -1,18 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Task - The Corona Game
+## Concepts shown
 
-Create me a list of students:
-* Pick 5 course students of your choice
-* Put them into the students state array in App.js
-* Display the list of students in the main tag using map
-* On Click on a student entry: Change infection status
-* Display if a student is infected (use conditional rendering)
+* Passing data & state change functions down to a child component - using props
 
-Bonus:
+### Details
+* Parent component (=container) holds the data to watch for (=state)
+* Parent component holds the methods that update the state
+* Child component (=display component) receives data and state change methods "passively"
+* Display components do not have any central state logic. They should just display stuff
 
-* Add a reset botton in the footer
-* On reset click: All students become healthy again
 
 ## Available Scripts
 
