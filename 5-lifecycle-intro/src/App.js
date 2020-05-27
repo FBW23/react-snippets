@@ -6,7 +6,10 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = { teachers: []}
+    this.state = { 
+      teachers: [],
+      teacherNew: { name: '' }
+    }
   }
 
   /**
@@ -38,11 +41,23 @@ class App extends Component {
    */
   addTeacher = () => {
 
-    let teacherName = prompt("Please enter name:")
-    let teacherNew = { name: teacherName }
-    let teachersCopy = [...this.state.teachers, teacherNew]
+    // let teacherName = prompt("Please enter name:")
+    let teachersCopy = [...this.state.teachers, this.state.teacherNew]
     localStorage.setItem("TEACHERS", JSON.stringify( teachersCopy ) )
     this.setState({teachers: teachersCopy})
+  }
+
+  handleTeacherNameInput = (e) => {
+    let nameNew = e.target.value
+    console.log(nameNew)
+    this.setState({teacherNew: {name: nameNew}})
+  }
+
+  deleteTeacher = (name) => {
+    // deletion method: filtering out the item we want to delete
+    let teachersCopy = this.state.teachers.filter(teacher => teacher.name !== name)
+    localStorage.setItem("TEACHERS", JSON.stringify( teachersCopy ) )
+    this.setState({teachers: teachersCopy}) // updating the state
   }
 
   render() {
@@ -55,11 +70,15 @@ class App extends Component {
           <div className="cards teachers">
             {
               this.state.teachers.map(teacher => (
-              <div key={teacher.name}>{teacher.name}</div>
+              <div onClick={ () => this.deleteTeacher(teacher.name) } key={teacher.name}>{teacher.name}</div>
               ))
             }
           </div>
-          <button type="button" onClick={() => this.addTeacher()}>ADD</button>
+          <form>
+            <input name="name" type="text" 
+              onChange={ (event) => this.handleTeacherNameInput(event) } />
+            <button type="button" onClick={() => this.addTeacher()}>ADD</button>
+          </form>
         </main>
         <footer>{ localStorage.getItem("COURSE") }</footer>
       </div>
