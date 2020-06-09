@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class UserDetails extends Component {
 
@@ -48,6 +49,9 @@ class UserDetails extends Component {
         ) 
         : ""
         }
+        <div className="link">
+          <Link to="/">Back to list</Link>
+        </div>
       </div>
     );
   }

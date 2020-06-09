@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 class UserList extends Component {
   state = {
@@ -14,7 +16,9 @@ class UserList extends Component {
     fetch("https://jsonplaceholder.typicode.com/users")
     .then(res => res.json())
     .then(users => {
-      this.setState({ users }) // => { users: users }
+      setTimeout(() => {
+        this.setState({ users }) // => { users: users }
+      }, 3000)
     })
   }
 
@@ -38,7 +42,11 @@ class UserList extends Component {
       <>
         <h3>USER LIST</h3>
         <div className="users">
-          {users.length && jsxUserList}
+          {users.length ? jsxUserList : (
+            <div className="loading">
+              <FontAwesomeIcon icon={faSpinner} pulse ></FontAwesomeIcon>
+            </div>
+          )}
         </div>
       </>
     );
