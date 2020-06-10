@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import PersonList from './components/PersonList';
+import PersonAdd from './components/PersonAdd';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <main>
         <div className="persons-container">
           <PersonList></PersonList>
+          <PersonAdd></PersonAdd>
         </div>
       </main>
       <footer>&copy; Copyright - Robazon store</footer>

@@ -28,7 +28,36 @@ main {
   width: 600px;
   height: 100%;
   margin: 0 auto;
-  border: 2px solid black;
+  // border: 2px solid black;
+
+  .persons {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    .person {
+      padding: 10px;
+      margin: 5px 0;
+      background: #ccc;
+      border-radius: 50px;
+    }
+
+
+  }
+
+  .person-add {
+
+    display: flex;
+
+    input, button {
+      padding: 5px;
+      border-radius: 15px;
+    }
+
+    input {
+      flex-grow: 1;
+    }
+  }
 }
 
 footer {

@@ -4,15 +4,14 @@ import { connect } from 'react-redux'
 class PersonList extends Component {
 
   render() { 
-    console.log("Props: ", this.props)
 
     let persons = this.props.persons || []
     let jsxPersonList = persons.map(person => (
-      <div key={person.name}>{person.name}</div>
+      <div className="person" key={person.name}>{person.name}</div>
     ))
 
 
-    return ( <div>{jsxPersonList}</div> );
+    return ( <div className="persons">{jsxPersonList}</div> );
   }
 }
  
