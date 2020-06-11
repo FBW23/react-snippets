@@ -2,6 +2,7 @@ import React from 'react';
 import './App.scss';
 import PersonList from './components/PersonList';
 import PersonAdd from './components/PersonAdd';
+import PersonFilter from './components/PersonFilter';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       </header>
       <main>
         <div className="persons-container">
+          <PersonFilter></PersonFilter>
           <PersonList></PersonList>
           <PersonAdd></PersonAdd>
         </div>

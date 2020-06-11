@@ -60,6 +60,14 @@ main {
   }
 }
 
+.person-search {
+  input {
+    padding: 5px;
+    border-radius: 15px;
+    outline: none;
+  }
+}
+
 footer {
   height: 10vh;
   display: grid;

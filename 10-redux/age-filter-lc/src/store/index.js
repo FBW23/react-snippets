@@ -9,7 +9,7 @@ const initialState = {
     {name: "Adele", age: 42},
     {name: "Steve", age: 15}
   ],
-  other: ''
+  ageFilter: 0
 }
 
 // create a store + hire store manager (=reducer) 
