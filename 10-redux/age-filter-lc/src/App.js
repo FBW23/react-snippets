@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Filtering made easy</h1>
+        <h1>Person List with Redux</h1>
       </header>
       <main>
         <div className="persons-container">

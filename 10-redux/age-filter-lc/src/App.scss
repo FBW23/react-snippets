@@ -40,6 +40,28 @@ main {
       margin: 5px 0;
       background: #ccc;
       border-radius: 50px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &>* {
+        width: 20%;
+      }
+
+      .person-info {
+        width: 60%;
+      }
+
+      .person-actions {
+        svg { 
+          margin: 3px; 
+
+          &:hover {
+            color: darkblue;
+          }
+        }
+      }
     }
 
 
@@ -61,11 +83,14 @@ main {
 }
 
 .person-search {
+  margin-bottom: 10px;
+
   input {
     padding: 5px;
     border-radius: 15px;
     outline: none;
   }
+
 }
 
 footer {

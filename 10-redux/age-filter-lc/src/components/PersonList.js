@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Person from './Person';
+
 
 class PersonList extends Component {
   
@@ -15,10 +17,7 @@ class PersonList extends Component {
     }
     
     let jsxPersonList = persons.map((person) => (
-      <div className="person" key={person.name}>
-        <div>{person.name}</div>
-        <div>{person.age}</div>
-      </div>
+      <Person key={person.id} data={person}></Person>
     ));
 
     return <div className="persons">

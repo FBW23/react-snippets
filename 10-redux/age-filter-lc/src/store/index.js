@@ -5,9 +5,9 @@ import rootReducer from './reducer'
 // initial set of data
 const initialState = {
   persons: [
-    {name: "Boris", age: 35},
-    {name: "Adele", age: 42},
-    {name: "Steve", age: 15}
+    { id: 1, name: "Boris", age: 35},
+    { id: 2, name: "Adele", age: 42},
+    { id: 3, name: "Steve", age: 15}
   ],
   ageFilter: 0
 }
