@@ -91,14 +91,21 @@ main {
     display: flex;
 
     input, button {
-      padding: 5px;
+      padding: 10px;
       border-radius: 15px;
+      background: #282c34;
+      color: white;      
     }
 
-    // button {
-    //   background: #282c34;
-    //   color: white;
-    // }
+    input {
+      &::placeholder { 
+        text-align: center; 
+        font-size: 1.2rem;
+      }
+    }
+
+    button {
+    }
 
     input {
       flex-grow: 1;
@@ -110,10 +117,17 @@ main {
   margin-bottom: 10px;
 
   input {
-    width: 100px;
-    padding: 5px;
+    width: 100%;
+    padding: 10px;
     border-radius: 15px;
     outline: none;
+    background: #282c34;
+    color: white;
+    text-align: center;
+    &::placeholder { 
+      font-size: 1.2rem;
+      text-align: center; 
+    }
   }
 
 }

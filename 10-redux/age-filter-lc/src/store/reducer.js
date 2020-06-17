@@ -13,6 +13,10 @@ const rootReducer = (state, action) => {
   console.log("Reducer received action", action);
 
   switch(action.type) {
+
+    case "FETCH_PERSONS":
+      let personsApi = action.payload
+      return {...state, persons: personsApi}
     
     case "ADD_PERSON":
       let personNew = action.payload // expect: {name: XYZ, age: Z}

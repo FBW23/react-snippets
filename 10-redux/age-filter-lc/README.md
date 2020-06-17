@@ -1,5 +1,22 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Concepts shown
+
+- Redux fundamentals
+  - Store
+  - Reducers
+  - Actions
+  - Action Creators
+
+- Connecting components to Redux
+  - Connect function
+  - Mapping State & Actions to Props
+
+- Connecting APIs
+  - Middleware & the Thunk package
+  - Async Actions
+  - API calls
+
 ## Available Scripts
 
 In the project directory, you can run:

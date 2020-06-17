@@ -1,19 +1,15 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducer'
-
+import thunk from 'redux-thunk'
 
 // initial set of data
 const initialState = {
-  persons: [
-    { id: 1, name: "Boris", age: 35},
-    { id: 2, name: "Adele", age: 42},
-    { id: 3, name: "Steve", age: 15}
-  ],
+  persons: [],
   ageFilter: 0
 }
 
 // create a store + hire store manager (=reducer) 
 // + some initial warehouse products (=initial state)
-let store = createStore(rootReducer, initialState)
+let store = createStore(rootReducer, initialState, applyMiddleware(thunk))
 
 export default store

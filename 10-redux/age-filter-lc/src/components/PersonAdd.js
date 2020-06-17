@@ -18,7 +18,6 @@ class PersonAdd extends Component {
   render() { 
 
     console.log("Props:", this.props);
-    
 
     return ( <div className="person-add">
       <input onChange={(e) => this.setState({name: e.target.value})}
