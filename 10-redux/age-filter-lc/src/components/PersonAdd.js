@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPerson } from '../store/actions';
+import { postPerson } from '../store/actions';
 
 class PersonAdd extends Component {
 
@@ -18,7 +18,7 @@ class PersonAdd extends Component {
         autoComplete="off" placeholder="Name..." type="text" name="name" />
       <input onChange={(e) => this.setState({age: e.target.value})}
         autoComplete="off" placeholder="Age..." type="number" name="age" />
-      <button onClick={() => this.props.fetchPerson(this.state.name, this.state.age)}>ADD</button>
+      <button onClick={() => this.props.postPerson(this.state.name, this.state.age)}>ADD</button>
     </div> );
   }
 }
@@ -31,4 +31,4 @@ class PersonAdd extends Component {
 // })
 
 // SHORTHAND SYNTAX => connect will do the dispatch for us automatically
-export default connect(null, { fetchPerson })(PersonAdd);
+export default connect(null, { postPerson })(PersonAdd);

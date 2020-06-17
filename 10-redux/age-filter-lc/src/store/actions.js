@@ -27,7 +27,7 @@ export const fetchPersons = () => {
 // DELETING AN ITEM
 // axios.delete(`/${id}`)
 
-export const fetchPerson = (name, age) => {
+export const postPerson = (name, age) => {
   return (dispatch) => {
     // with axios you can send an object directly
     axios.post("/", {name, age})
