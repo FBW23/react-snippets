@@ -20,7 +20,7 @@ const rootReducer = (state, action) => {
     
     case "ADD_PERSON":
       let personNew = action.payload // expect: {name: XYZ, age: Z}
-      personNew.id = Date.now() // 1234455
+      //personNew.id = Date.now() // 1234455
       return {...state, persons: [...state.persons, personNew]}
     
     case "UPDATE_PERSON":

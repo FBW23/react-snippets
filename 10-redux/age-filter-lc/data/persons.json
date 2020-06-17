@@ -16,8 +16,19 @@
       "age": 15
     },
     {
-      "name": "Balazs",
+      "name": "Rob",
+      "age": "37",
       "id": 4
+    },
+    {
+      "name": "Aghi",
+      "age": "29",
+      "id": 5
+    },
+    {
+      "name": "Nicolo",
+      "age": "26",
+      "id": 6
     }
   ]
 }

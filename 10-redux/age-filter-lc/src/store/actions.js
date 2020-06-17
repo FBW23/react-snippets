@@ -1,4 +1,7 @@
 // PERSON CRUD actions
+import axios from 'axios'
+
+axios.defaults.baseURL = "http://localhost:8000/persons"
 
 export const receivedPersons = (persons) => (
   {type: "RECEIVED_PERSONS", payload: persons}
@@ -8,9 +11,9 @@ export const receivedPersons = (persons) => (
 // once finished => it dispatches a SIMPLE action
 export const fetchPersons = () => {
   return (dispatch) => {
-    fetch("http://localhost:8000/persons")
-    .then(res => res.json())
-    .then(personsApi => {
+    axios.get("/")
+    .then(res => {
+      let personsApi = res.data
       // dispatch now an "ordinary" action at the end
       // to forward our received data to the reducer
       dispatch(receivedPersons(personsApi))
@@ -18,9 +21,19 @@ export const fetchPersons = () => {
   }
 }
 
+export const fetchPerson = (name, age) => {
+  return (dispatch) => {
+    axios.post("/", {name, age})
+    .then(res => {
+      let personApi = res.data
+      console.log(personApi)
+      dispatch(addPerson(personApi))
+    })
+  }
+}
 
-export const addPerson = (name, age) => (
-  {type: 'ADD_PERSON', payload: {name, age} }
+export const addPerson = (person) => (
+  {type: 'ADD_PERSON', payload: person }
 )
 
 export const updatePerson = (person) => (
