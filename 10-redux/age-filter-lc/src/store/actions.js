@@ -4,13 +4,15 @@ export const receivedPersons = (persons) => (
   {type: "RECEIVED_PERSONS", payload: persons}
 )
 
-// ASYNC action need to fetch data
+// ASYNC action is needed to fetch data
 // once finished => it dispatches a SIMPLE action
 export const fetchPersons = () => {
   return (dispatch) => {
     fetch("http://localhost:8000/persons")
     .then(res => res.json())
     .then(personsApi => {
+      // dispatch now an "ordinary" action at the end
+      // to forward our received data to the reducer
       dispatch(receivedPersons(personsApi))
     })
   }
