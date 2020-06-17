@@ -14,7 +14,7 @@ const rootReducer = (state, action) => {
 
   switch(action.type) {
 
-    case "FETCH_PERSONS":
+    case "RECEIVED_PERSONS":
       let personsApi = action.payload
       return {...state, persons: personsApi}
     

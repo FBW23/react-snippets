@@ -1,7 +1,7 @@
 // PERSON CRUD actions
 
 export const receivedPersons = (persons) => (
-  {type: "FETCH_PERSONS", payload: persons}
+  {type: "RECEIVED_PERSONS", payload: persons}
 )
 
 // ASYNC action need to fetch data

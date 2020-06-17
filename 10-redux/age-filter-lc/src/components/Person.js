@@ -33,9 +33,12 @@ class Person extends Component {
     let person = this.props.data
     let editMode = this.state.editMode
 
+
     return (
       <div className="person">
-        <div></div>
+        <div>
+          
+        </div>
         <div className="person-info" onDoubleClick={this.toggleEditMode}>
           <div className="person-name">
             { !editMode ? person.name : 
