@@ -17,21 +17,30 @@ export const fetchPersons = () => {
       // dispatch now an "ordinary" action at the end
       // to forward our received data to the reducer
       dispatch(receivedPersons(personsApi))
-    })
+    })    
   }
 }
 
+// UPDATING AN ITEM
+// axios.patch(`/${id}`, { age: 37 })
+
+// DELETING AN ITEM
+// axios.delete(`/${id}`)
+
 export const fetchPerson = (name, age) => {
   return (dispatch) => {
+    // with axios you can send an object directly
     axios.post("/", {name, age})
     .then(res => {
       let personApi = res.data
       console.log(personApi)
+      // call simple action at the end to store the data from the API
       dispatch(addPerson(personApi))
     })
   }
 }
 
+// normal action - put received data into redux store
 export const addPerson = (person) => (
   {type: 'ADD_PERSON', payload: person }
 )
