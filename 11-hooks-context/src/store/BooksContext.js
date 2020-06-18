@@ -1,9 +1,13 @@
 import React, { createContext, useState } from 'react';
 
-// CONTEXT => Redux Store
-// PROVIDER = Redux Provider
+// CONTEXT => like Redux Store
+// PROVIDER => like Redux Provider
 
 // HOC = Higher Order Component
+// => HOC components WRAP other components to provide them 
+//    with some functionality or data
+
+// Classical Examples: React-Router & Redux Provider
 // <Router><App /></Router>
 // <Provider store={store}><App /></Provider>
 
@@ -14,7 +18,7 @@ const BooksProvider = (props) => {
   console.log("Props:", props.children)
 
   const [ books, setBooks ] = useState([
-    { title: 'Book 1', author: 'Rob', image: "https://randomuser.me/api/portraits/men/32.jpg" },
+    { title: 'Book 1', author: 'Rob' },
     { title: 'Book 2', author: 'Rob' },
     { title: 'Book 3', author: 'Rob' }
   ]);
@@ -37,7 +41,7 @@ const BooksProvider = (props) => {
 
   return (
     <BooksContext.Provider value={sharedData}>
-      {/* props.children = <App /> */}
+      {/* props.children => our <App /> component will be inside there */}
       { props.children }
     </BooksContext.Provider>
   )
