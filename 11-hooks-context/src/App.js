@@ -10,11 +10,17 @@ import { useState } from 'react';
 
 function App() {
 
-  // read data from the context
-  let { message, books, addBook, updateBook, deleteBook } = useContext(BooksContext);
 
+  // state = { title: '', author: '' }
+  let [ title, setTitle ] = useState("")
+  let [ author, setAuthor ] = useState("")
+
+  // read data from the context
+  let { message, books, addBook, deleteBook } = useContext(BooksContext);
+
+  // BOOK LIST
   let jsxBookList = books.map((book) => 
-    <div key={book.title}>{book.title}</div>
+    <div key={book.title} onClick={() => deleteBook(book.id)} >{book.title}</div>
   );
 
   console.log('Data from context: ', message);
@@ -26,7 +32,15 @@ function App() {
       </header>
       <main>
         { jsxBookList }
-        <button onClick={addBook}>Add</button>
+        <div>
+          <input 
+            value={title} onChange={(e) => setTitle(e.target.value)}
+            type="text" placeholder="Title..." />
+          <input 
+            value={author} onChange={(e) => setAuthor(e.target.value)}
+            type="text" placeholder="Author..." />
+          <button onClick={() => addBook({id: Date.now(), title, author})}>Add</button>
+        </div>
       </main>
     </div>
   );

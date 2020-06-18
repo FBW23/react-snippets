@@ -1,0 +1,7 @@
+{
+  "books": [
+    { "id": 1, "title": "Book 1", "author": "Rob" },
+    { "id": 2, "title": "Book 2", "author": "Rob" },
+    { "id": 3, "title": "Alice in Wonderland", "author": "Lewis Carrol" }
+  ]
+}

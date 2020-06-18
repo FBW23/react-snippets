@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 // CONTEXT => like Redux Store
 // PROVIDER => like Redux Provider
@@ -17,19 +17,35 @@ const BooksProvider = (props) => {
 
   console.log("Props:", props.children)
 
-  const [ books, setBooks ] = useState([
-    { title: 'Book 1', author: 'Rob' },
-    { title: 'Book 2', author: 'Rob' },
-    { title: 'Book 3', author: 'Rob' }
-  ]);
+  const [books, setBooks] = useState([])
 
-  const addBook = () => {
-    let bookNew = { title: "New", author: "New"}
+  // => componentDidMount, componentDidUpdate, componentWillUnmount
+  useEffect(() => {
+    fetch("http://localhost:8000/books")
+    .then(res => res.json())
+    .then(booksApi => {
+      console.log("Books API:", booksApi)
+      setBooks(booksApi)
+    })
+  }, [])
+
+  // const [ books, setBooks ] = useState([
+  //   { id: 1, title: 'Book 1', author: 'Rob' },
+  //   { id: 2, title: 'Book 2', author: 'Rob' },
+  //   { id: 3, title: 'Book 3', author: 'Rob' }
+  // ]);
+
+  const addBook = (bookNew) => {
+    console.log(bookNew)
     setBooks([...books, bookNew ])
   }
 
+  const deleteBook = (id) => {
+    let booksNew = books.filter(book => book.id != id)
+    setBooks(booksNew)
+  }
+
   const updateBook = () => {}
-  const deleteBook = () => {}
 
   let sharedData = { 
     message: "Hello world",
