@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import loginSchema from './lib/validation_rules';
 
 /**
@@ -9,16 +9,31 @@ import loginSchema from './lib/validation_rules';
  * - validation schema (YUP)
  */
 
-
 function App() {
+  
+  let smokingOptions = [
+    { label: 'Nonsmoker', value: 'none' },
+    { label: 'Shisha', value: 'shisha' },
+    { label: 'Cigarette', value: 'ciga' }
+  ];
 
-  let initialValues = { email: '', password: '' }
+  let initialValues = {
+    email: '',
+    password: '',
+    username: '',
+    bio: '',
+    drugs: { weed: false, cocaine: true },
+    smoking: '',
+    therapists: ['', '', '']
+  };
 
-  const onSubmit = (values) => {
-    console.log("Successful submit: ", values)
+  const onSubmit = (values, submitProps) => {
+    console.log('Successful submit: ', values);
+
+    submitProps.resetForm();
 
     // DO SOME FETCH / AXIOS TO YOUR BACKEND NOW....
-  }
+  };
 
   return (
     <div className="App">
@@ -27,28 +42,73 @@ function App() {
             onSubmit - your submit handler to which values are passed once validation passed
             validationSchema - your YUP schema with all the validation rules for your fields
         */}
-        <Formik 
-          initialValues={initialValues} 
-          onSubmit={onSubmit}
-          validationSchema={loginSchema}
-          >
+        <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={loginSchema}>
           <Form>
+            {/* EMAIL INPUT */}
             <div className="form-input">
               <label htmlFor="email">Email: </label>
-              <Field name="email" type="email" />
+              <Field id="email" name="email" type="email" />
               <ErrorMessage name="email" component="div" className="error" />
             </div>
+            {/* PASSWORD INPUT */}
             <div className="form-input">
               <label htmlFor="password">Password: </label>
-              <Field name="password" type="password" />
+              <Field id="password" name="password" type="password" />
               <ErrorMessage name="password" component="div" className="error" />
             </div>
+            {/* TEXTAREA INPUT */}
             <div className="form-input">
               <label htmlFor="bio">Bio: </label>
-              <Field name="bio" as="textarea" />
+              <Field id="bio" name="bio" as="textarea" />
               <ErrorMessage name="bio" component="div" className="error" />
             </div>
-            <button type="submit">Login</button>
+            <div className="form-input">
+              <label htmlFor="username">Username: </label>
+              <Field id="username" name="username" />
+              <ErrorMessage name="username" component="div" className="error" />
+            </div>
+            {/* CHECKBOX GROUP */}
+            <div className="form-input">
+              <div className="checkbox-input">
+                <label>Weed</label>
+                <Field id="weed" name="drugs.weed" type="checkbox" />
+              </div>
+              <div className="checkbox-input">
+                <label>Cocaine</label>
+                <Field id="cocaine" name="drugs.cocaine" type="checkbox" />
+              </div>
+              {/* <ErrorMessage name="bio" component="div" className="error" /> */}
+            </div>
+            {/* SELECTBOX */}
+            <div className="form-input">
+              <label>Smoking Status</label>
+              <Field as="select" name="smoking">
+                {smokingOptions.map((option) => (
+                  <option key={option.label} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </Field>
+            </div>
+            {/* ARRAY OF INPUTS */}
+            <div className="form-input">
+              <label>Therapists</label>
+              <FieldArray>{
+                (arrProps) => {
+                  // fetch the list of therapists from the formik values
+                  let therapists = arrProps.form.values.therapists
+                  // render the list of therapists
+                  return therapists.map((therapist, i) => <div key={i}>
+                      <Field name={`therapists[${i}]`} />
+                      <ErrorMessage name={`therapists[${i}]`} />
+                    </div>
+                  )
+                }
+              }
+              </FieldArray> 
+            </div>
+
+            <button type="submit">Signup</button>
           </Form>
         </Formik>
       </main>

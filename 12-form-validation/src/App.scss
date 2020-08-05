@@ -20,6 +20,11 @@ main {
     label {
       display: block;
     }
+    .checkbox-input {
+      label {
+        display: inline-block;
+      }
+    }
     .error {
       color: red;
       font-size: 12px;
