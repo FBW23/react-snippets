@@ -1,0 +1,29 @@
+.App {
+  // text-align: center;
+  padding: 30px;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+main {
+
+  form {
+    width: 500px;
+    margin: 0 auto;
+
+    .form-input {
+      margin: 20px 0;
+    }
+  
+    label {
+      display: block;
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+    }
+  }
+
+}
