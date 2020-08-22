@@ -24,7 +24,7 @@ function App() {
     bio: '',
     drugs: { weed: false, cocaine: true },
     smoking: '',
-    therapists: ['', '', '']
+    therapists: ['']
   };
 
   const onSubmit = (values, submitProps) => {
@@ -93,19 +93,24 @@ function App() {
             {/* ARRAY OF INPUTS */}
             <div className="form-input">
               <label>Therapists</label>
-              <FieldArray>{
+              <FieldArray name="therapists">{
                 (arrProps) => {
                   // fetch the list of therapists from the formik values
                   let therapists = arrProps.form.values.therapists
+                  let { push, remove } = arrProps
                   // render the list of therapists
                   return therapists.map((therapist, i) => <div key={i}>
                       <Field name={`therapists[${i}]`} />
-                      <ErrorMessage name={`therapists[${i}]`} />
+                      {/* Add / remove buttons */}
+                      <button type="button" onClick={() => push('')}>+</button>
+                      {/* ONLY allow deletion if we have at least one item */}
+                      { therapists.length > 1 && <button type="button" onClick={() => remove(i)}>-</button> }
                     </div>
                   )
                 }
               }
               </FieldArray> 
+              <ErrorMessage name="therapists" component="div" className="error" />
             </div>
 
             <button type="submit">Signup</button>
